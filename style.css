@@ -1,0 +1,22 @@
+h1 {
+  font-size: 34px;
+  line-height: 48px;
+  font-weight: 900;
+  margin: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+h3 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 24px;
+}
+.day1icon {
+  font-size: 80px;
+}
+
+body,
+p {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+button {
+  font-size: 19px;
+}
