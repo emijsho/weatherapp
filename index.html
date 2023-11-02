@@ -16,129 +16,116 @@
       src="https://kit.fontawesome.com/0fe7523df9.js"
       crossorigin="anonymous"
     ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Croissant+One&family=Kanit&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div class="container">
-      <div class="card">
-        <div class="card-body">
-          <form id="search-form">
-            <input
-              type="text"
-              placeholder="Search New City"
-              autocomplete="off"
-              autofocus="on"
-              id="searchCityInput"
-            /><input type="submit" value="Search" />
-          </form>
-          <button id="currentPositionButton">Find Current Location</button>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-3" id="location">
-              <h1></h1>
-            </div>
-            <div class="col-3" id="weatherIcon">
-              <i class="fa-solid fa-cloud-rain day1icon"></i>
-            </div>
-
-            <div class="col-3" id="temperature">
-              <span class="units"
-                ><a href="#" id="celcius-link">°C</a> |
-                <a href="#" id="fahrenheit-link">°F</a></span
-              >
-            </div>
-
-            <div class="col-3" id="info">
-              <span class="humidity" id="humidity">Humidity / </span><br />
-              <span class="wind" id="wind">Wind MPH</span>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-6" id="dayTime">
-              <h3>Day 1 / 24hr Time</h3>
-            </div>
-            <div class="col"></div>
-            <div class="col"></div>
-
-            <div class="col-3" id="weatherDescription">
-              <h3>Rainy Description</h3>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body" text-align="center">
-          <div class="row">
-            <div class="col">
-              <h3><i class="fa-solid fa-wind icon"></i></h3>
-            </div>
-            <div class="col">
-              <h3><i class="fa-solid fa-cloud-showers-heavy"></i></h3>
-            </div>
-            <div class="col">
-              <h3><i class="fa-solid fa-cloud-bolt icon"></i></h3>
-            </div>
-            <div class="col">
-              <h3><i class="fa-solid fa-cloud-sun"></i></h3>
-            </div>
-            <div class="col">
-              <h3><i class="fa-regular fa-sun icon"></i></h3>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col"><strong>High</strong> / Low</div>
-            <div class="col"><strong>High</strong> / Low</div>
-            <div class="col"><strong>High</strong> / Low</div>
-            <div class="col"><strong>High</strong> / Low</div>
-            <div class="col"><strong>High</strong> / Low</div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <div class="forecast-time">Day 2</div>
-              <div class="forecast temperature">
-                <span class="forecast-temperature-max"></span>
-                <span class="forecast-temperature-min"></span>
+    <div class="weather-app">
+      <div class="container">
+        <div class="card">
+          <div class="card-body">
+            <header>
+            <form class="search-form-input" id="search-form">
+              <input
+                type="text"
+                placeholder="Search New City"
+                autocomplete="off"
+                autofocus="on"
+                id="searchCityInput"
+              /><input type="submit" value="Search" class="search-form-button"/>
+              <button id="currentPositionButton">Find Current Location</button>
+            </form>
+     </header>
+     <main>
+     <div class="weather-app-data">
+            <div class="row">
+              <span class="col-6" id="location"><h1>City</h1></span>
+              <span class="temperature"><a href="#" id="celcius-link">°C</a> |
+                <a href="#" id="fahrenheit-link">°F</a></span>            <span class="weatherIcon"><i class="fa-solid fa-cloud-rain day1icon"></i></span>
+ </div>
+              <div class="col-6" id="weather-details">
+                <span class="dayTime"><h3 id="timeDay">Day 1 / 24hr Time</h3></span>
+                <span class="weatherDescription" id="weatherDescription">Rainy Description</span><br />
+                <strong><span class="humidity" id="humidity"> </strong> Humidity</span><br />
+                <strong><span class="wind" id="wind"> </strong> Windspeed</span><br />
+                
+              </div>
+       </div>
+   </main>
+            <div class="row">
+              <div class="col">
+                <h4><i class="fa-solid fa-wind icon"></i></h4>
+              </div>
+              <div class="col">
+                <h4><i class="fa-solid fa-cloud-showers-heavy"></i></h4>
+              </div>
+              <div class="col">
+                <h4><i class="fa-solid fa-cloud-bolt icon"></i></h4>
+              </div>
+              <div class="col">
+                <h4><i class="fa-solid fa-cloud-sun"></i></h4>
+              </div>
+              <div class="col">
+                <h4<i class="fa-regular fa-sun icon"></i></h4>
               </div>
             </div>
-            <div class="col">
-              <div class="forecast-time">Day 3</div>
-              <div class="forecast temperature">
-                <span class="forecast-temperature-max"></span>
-                <span class="forecast-temperature-min"></span>
+            <div class="row">
+              <div class="col"><strong>High</strong> / Low</div>
+              <div class="col"><strong>High</strong> / Low</div>
+              <div class="col"><strong>High</strong> / Low</div>
+              <div class="col"><strong>High</strong> / Low</div>
+              <div class="col"><strong>High</strong> / Low</div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="forecast-time">Day 2</div>
+                <div class="forecast temperature">
+                  <span class="forecast-temperature-max"></span>
+                  <span class="forecast-temperature-min"></span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="forecast-time">Day 3</div>
+                <div class="forecast temperature">
+                  <span class="forecast-temperature-max"></span>
+                  <span class="forecast-temperature-min"></span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="forecast-time">Day 4</div>
+                <div class="forecast temperature">
+                  <span class="forecast-temperature-max"></span>
+                  <span class="forecast-temperature-min"></span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="forecast-time">Day 5</div>
+                <div class="forecast temperature">
+                  <span class="forecast-temperature-max"></span>
+                  <span class="forecast-temperature-min"></span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="forecast-time">Day 6</div>
+                <div class="forecast temperature">
+                  <span class="forecast-temperature-max"></span>
+                  <span class="forecast-temperature-min"></span>
+                </div>
               </div>
             </div>
-            <div class="col">
-              <div class="forecast-time">Day 4</div>
-              <div class="forecast temperature">
-                <span class="forecast-temperature-max"></span>
-                <span class="forecast-temperature-min"></span>
-              </div>
-            </div>
-            <div class="col">
-              <div class="forecast-time">Day 5</div>
-              <div class="forecast temperature">
-                <span class="forecast-temperature-max"></span>
-                <span class="forecast-temperature-min"></span>
-              </div>
-            </div>
-            <div class="col">
-              <div class="forecast-time">Day 6</div>
-              <div class="forecast temperature">
-                <span class="forecast-temperature-max"></span>
-                <span class="forecast-temperature-min"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <small>
-        <a href="https://github.com/emijsho/weatherapp">Open Source Code</a> by
-        Emily Short</small
-      >
+                 </div>
     </div>
+        <footer>
+          <small>
+            <a href="https://github.com/emijsho/weatherapp">Open Source Code</a>
+            by Emily Short</small
+          >
+        </footer>
 
-    <script src="script.js" type="module"></script>
+    <script src="script.js"></script>
   </body>
 </html>

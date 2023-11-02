@@ -1,22 +1,50 @@
-h1 {
+header {
+  border-bottom: 1px solid #acc6aa;
+  padding: 0 0 20px 0;
+}
+.weather-app-data {
+  display: flex;
+  justify-content: space-between;
+}
+strong {
+  color: #4d5e4c;
+}
+.weather-details {
+  text-align: center;
+}
+main {
+  padding: 20px 0 20px 0;
+}
+.weatherDescription {
+  text-transform: capitalize;
+}
+body {
+  background-color: #acc6aa88;
+  font-family: "Croissant One", serif;
+  font-family: "Kanit", sans-serif;
+}
+a {
+  color: #4d5e4c;
+}
+.weather-app {
+  background-color: white;
+  max-width: 600px;
+  margin: 45px auto;
+  box-shadow: 0 30px 50px rgba(65, 50, 100, 0.08);
+  border-radius: 10px;
+  padding: 30px;
+}
+.search-form-button,
+button {
+  font-size: 16px;
+  background-color: #acc6aa88;
+  padding: 0px 14px;
+  border-radius: 6px;
+  margin-left: 2px;
+}
+.location {
   font-size: 34px;
   line-height: 48px;
   font-weight: 900;
   margin: 0;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-h3 {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 24px;
-}
-.day1icon {
-  font-size: 80px;
-}
-
-body,
-p {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-button {
-  font-size: 19px;
 }
