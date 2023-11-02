@@ -70,3 +70,5 @@ dayTime.innerHTML = `${day} / ${hours}:${minutes}`;
 //submit search form
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
+
+searchCity("Boston");
