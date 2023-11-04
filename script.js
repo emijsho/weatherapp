@@ -30,7 +30,7 @@ function updateIcon() {
   let apiUrl = `https://api.shecodes.io/weather/v1/current?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
   document.querySelector(
     "#weatherIcon"
-  ).innerHTML = `<img src="${response.data.condition.icon_url}">`;
+  ).innerHTML = `${response.data.condition.icon_url}`;
   axios.get(apiUrl).then(showWeatherDetails);
 }
 function showPosition(position) {

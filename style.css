@@ -6,11 +6,14 @@ header {
   display: flex;
   justify-content: space-between;
 }
+.weather-app-icon {
+  width: 80px;
+}
 strong {
   color: #4d5e4c;
 }
 .weather-details {
-  text-align: center;
+  text-align: right;
 }
 main {
   padding: 20px 0 20px 0;
