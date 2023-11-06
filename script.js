@@ -16,10 +16,13 @@ function showWeatherDetails(response) {
     response.data.main.temp
   )}°C`;
   let localTime = new Date(response.data.time * 1000);
-  console.log(localTime);
+  console.log(response.data.time);
   document.querySelector(
     "#local-timeDay"
-  ).innerHTML = `Local Time: ${localTime.getHours()}:${localTime.getMinutes()}`;
+  ).innerHTML = `Local Time: ${localTime.hour}:${localTime.minutes}`;
+  document.querySelector(
+    "#weatherIcon"
+  ).innerHTML = `${response.data.condition.icon_url}`;
 }
 
 function updateIcon() {
@@ -28,9 +31,6 @@ function updateIcon() {
   let units = "metric";
   let apiKey = "494f3181eb1oe9bfae0t4f2214913d5b";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
-  document.querySelector(
-    "#weatherIcon"
-  ).innerHTML = `${response.data.condition.icon_url}`;
   axios.get(apiUrl).then(showWeatherDetails);
 }
 function showPosition(position) {
@@ -38,8 +38,8 @@ function showPosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   let units = "metric";
-  let apiKey = "494f3181eb1oe9bfae0t4f2214913d5b";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
+  let apiKey = "3dce9b1c66837262a25b3f448d354a76";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
   console.log(apiUrl);
   axios.get(apiUrl).then(showWeatherDetails);
 }
