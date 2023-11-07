@@ -15,14 +15,25 @@ function showWeatherDetails(response) {
   document.querySelector("#celcius-link").innerHTML = `${Math.round(
     response.data.main.temp
   )}°C`;
-  let localTime = new Date(response.data.time * 1000);
+  let localTime = new Date(response.data.dt * 1000);
   console.log(response.data.time);
+  let hours = localTime.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = localTime.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
   document.querySelector(
     "#local-timeDay"
-  ).innerHTML = `Local Time: ${localTime.hour}:${localTime.minutes}`;
-  document.querySelector(
-    "#weatherIcon"
-  ).innerHTML = `${response.data.condition.icon_url}`;
+  ).innerHTML = `Local Time: ${hours}:${minutes}`;
+  document
+    .querySelector("#weather-app-icon")
+    .setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
 }
 
 function updateIcon() {
