@@ -75,6 +75,24 @@ function searchCity(city) {
   axios.get(`${apiUrl}&appid=${apiKey}`).then(showWeatherDetails);
 }
 
+function displayForecast() {
+  let forcastDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let forecastHTML = "";
+  forcastDays.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+<div class="forecast-day">${day}</div>
+<div class="forecast-icon"></div>
+<div class="forecast temperature">
+<span class="forecast-temperature-max"><strong>High</strong></span>
+<span class="forecast-temperature-min">Low</span>
+</div>`;
+  });
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = forecastHTML;
+}
+
 //date and hours
 let now = new Date();
 let days = [
@@ -118,3 +136,4 @@ let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
 
 searchCity("Boston");
+displayForecast();
