@@ -54,3 +54,6 @@ button {
 p {
   margin: 0;
 }
+.weather-forecast {
+  text-align: center;
+}
