@@ -16,24 +16,25 @@ function showWeatherDetails(response) {
     response.data.main.temp
   )}°C`;
   let localTime = new Date(response.data.dt * 1000);
-  console.log(response.data.time);
-  let hours = localTime.getHours();
+  console.log(response.data.dt);
+  let localHours = localTime.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
   }
-  let minutes = localTime.getMinutes();
+  let localMinutes = localTime.getMinutes();
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
   document.querySelector(
     "#local-timeDay"
-  ).innerHTML = `Local Time: ${hours}:${minutes}`;
+  ).innerHTML = `Local Time: ${localHours}:${localMinutes}`;
   document
     .querySelector("#weather-app-icon")
     .setAttribute(
       "src",
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
+  displayForecast(response.data.name);
 }
 
 function updateIcon() {
@@ -74,8 +75,14 @@ function searchCity(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(`${apiUrl}&appid=${apiKey}`).then(showWeatherDetails);
 }
-
-function displayForecast() {
+function getForecast(city) {
+  let units = "metric";
+  let apiKey = "494f3181eb1oe9bfae0t4f2214913d5b";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(displayForecast);
+}
+function displayForecast(response) {
+  console.log(response);
   let forcastDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let forecastHTML = "";
   forcastDays.forEach(function (day) {
@@ -136,4 +143,3 @@ let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
 
 searchCity("Boston");
-displayForecast();
