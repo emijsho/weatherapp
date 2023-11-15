@@ -7,7 +7,7 @@ header {
   justify-content: space-between;
 }
 .weather-app-icon {
-  width: 80px;
+  width: 100%;
 }
 strong {
   color: #4d5e4c;
@@ -46,9 +46,8 @@ button {
   margin-left: 2px;
 }
 .location {
-  font-size: 34px;
+  font-weight: bolder;
   line-height: 48px;
-  font-weight: 900;
   margin: 0;
 }
 p {
