@@ -16,9 +16,9 @@ function showWeatherDetails(response) {
     response.data.main.temp
   )}°C`;
 
-  document.querySelector("#fahrenheit-link").innerHTML = `${
-    Math.round(response.data.main.temp * 9) / 5 + 32
-  }°F`;
+  document.querySelector("#fahrenheit-link").innerHTML = `${Math.round(
+    (response.data.main.temp * 9) / 5 + 32
+  )}°F`;
 
   let localTime = response.data.timezone / 3600;
   console.log(response.data.timezone / 3600);
@@ -136,17 +136,24 @@ function displayForecast(response) {
     if (index < 5) {
       forecastHTML =
         forecastHTML +
-        `<div class="row"><div class="col-2">
+        `<div class="forecast-data">
 <div class="forecast-day">${formatDay(day.time)}</div>
 <div><img src="${day.condition.icon_url}" class="forecast-icon"/></div>
-<div class="forecast temperature">
-<div class="forecast-temperature-max"><strong>${Math.round(
+<div class="forecast-temperature-celcius">
+<span class="forecast-temperature-max"><strong>${Math.round(
           day.temperature.maximum
-        )}</strong></div>
-<div class="forecast-temperature-min">${Math.round(
+        )}°c</strong></span>
+<span class="forecast-temperature-min">${Math.round(
           day.temperature.minimum
-        )}</div>
-</div></div></div>`;
+        )}°c</span></div>
+        <div class="forecast-temperature-celcius">
+<span class="forecast-temperature-max"><strong>${Math.round(
+          (day.temperature.maximum * 9) / 5 + 32
+        )}°f</strong></span>
+<span class="forecast-temperature-min">${Math.round(
+          (day.temperature.minimum * 9) / 5 + 32
+        )}°f</span></div>
+</div>`;
     }
   });
   let forecastElement = document.querySelector("#forecast");
