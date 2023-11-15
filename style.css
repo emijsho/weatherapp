@@ -57,3 +57,7 @@ p {
 .weather-forecast {
   text-align: center;
 }
+.forecast-icon {
+  width: 20px;
+  text-align: center;
+}
