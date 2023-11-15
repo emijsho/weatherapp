@@ -35,7 +35,7 @@ function showWeatherDetails(response) {
       "src",
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
-  displayForecast(response.data.name);
+  getForecast(response.data.name);
 }
 
 function updateIcon() {
@@ -76,38 +76,6 @@ function searchCity(city) {
   axios.get(`${apiUrl}&appid=${apiKey}`).then(showWeatherDetails);
 }
 
-function forecastDay(timestamp) {
-  let date = newdate(timestamp * 1000);
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  return days[date.getDay()];
-}
-function getForecast(city) {
-  let apiKey = "494f3181eb1oe9bfae0t4f2214913d5b";
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
-  axios.get(apiUrl).then(displayForecast);
-}
-function displayForecast(response) {
-  let forecastHTML = "";
-  response.data.daily.forEach(function (day, index) {
-    if (index < 5) {
-      forecastHTML =
-        forecastHTML +
-        `
-<div class="forecast-day">${forecastDay(day.time)}</div>
-<div><img src="${day.condition.icon_url}"class="forecast-icon"/></div>
-<div class="forecast temperature">
-<span class="forecast-temperature-max"><strong>${Math.round(
-          day.temperature.maximum
-        )}</strong></span>
-<span class="forecast-temperature-min">${Math.round(
-          day.temperature.minimum
-        )}/span>
-</div>`;
-    }
-  });
-  let forecastElement = document.querySelector("#forecast");
-  forecastElement.innerHTML = forecastHTML;
-}
 //date and hours
 let now = new Date();
 let days = [
@@ -146,6 +114,44 @@ if (minutes < 10) {
 }
 let dayTime = document.querySelector("#timeDay");
 dayTime.innerHTML = `${day} ${month} ${year} / ${hours}:${minutes}`;
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[date.getDay()];
+}
+
+function getForecast(city) {
+  let apiKey = "494f3181eb1oe9bfae0t4f2214913d5b";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios(apiUrl).then(displayForecast);
+  console.log(apiUrl);
+}
+// displayForecast
+function displayForecast(response) {
+  console.log(response.data);
+  forecastHTML = "";
+
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="row"><div class="col-2">
+<div class="forecast-day">${formatDay(day.time)}</div>
+<div><img src="${day.condition.icon_url}" class="forecast-icon"/></div>
+<div class="forecast temperature">
+<div class="forecast-temperature-max"><strong>${Math.round(
+          day.temperature.maximum
+        )}</strong></div>
+<div class="forecast-temperature-min">${Math.round(
+          day.temperature.minimum
+        )}</div>
+</div></div></div>`;
+    }
+  });
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = forecastHTML;
+}
 //submit search form
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
