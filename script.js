@@ -22,7 +22,7 @@ function showWeatherDetails(response) {
 
   let localTime = response.data.timezone / 3600;
   console.log(response.data.timezone / 3600);
-  let localHours = `${hours} - ${localTime}`;
+  let localHours = hours + localTime;
   if (hours < 10) {
     hours = `0${hours}`;
   }
